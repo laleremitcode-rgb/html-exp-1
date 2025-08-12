@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration Form</title>
+  <style>
+    body {
+      margin-top: 40px;
+      margin-bottom: 60px;
+      margin-right: 75px;
+      margin-left: 75px;
+      background-color: lightblue;
+
+      /* Adding a related background image */
+      background-image: url("RRR.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-size:large;
+    }
+
+   
+
+    fieldset {
+      border: 2px solid red;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: red;
+      background-color: rgba(255,255,255,0.7);
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Registration Form</h1>
+
+  <form action="servert.html">
+    <fieldset>
+      <legend style="color:#4d20ff;">Personal Information</legend>
+
+      <label for="fname">Full Name:</label><br>
+      <input type="text" id="fname" name="fname"><br><br>
+
+      <label for="email">Email Address:</label><br>
+      <input type="email" id="email" name="email"><br><br>
+
+      <label for="pass">Password:</label><br>
+      <input type="password" id="pass" name="pass" minlength="6" required><br><br>
+
+      <label for="cpass">Confirm Password:</label><br>
+      <input type="password" id="cpass" name="cpass" minlength="6" required><br><br>
+
+      <label>Gender:</label><br>
+      <input type="radio" id="male" name="gen" value="Male">
+      <label for="male">Male</label><br>
+      <input type="radio" id="female" name="gen" value="Female">
+      <label for="female">Female</label><br><br>
+
+      <label>Hobbies:</label><br>
+      <input type="checkbox" id="board" name="hobbies" value="Playing Board Games">
+      <label for="board">Playing Board Games</label><br>
+      <input type="checkbox" id="gard" name="hobbies" value="Gardening">
+      <label for="gard">Gardening</label><br>
+      <input type="checkbox" id="cook" name="hobbies" value="Cooking">
+      <label for="cook">Cooking</label><br><br>
+
+      <label for="birth">Birthdate:</label><br>
+      <input type="date" id="birth" name="birth"><br><br>
+
+      <label for="myfile">Upload Profile Picture:</label><br>
+      <input type="file" id="myfile" name="myfile"><br><br>
+    </fieldset>
+
+    <fieldset style="border:2px solid green;">
+      <legend style="color:#4d20ff;">Additional Information</legend>
+
+      <label for="country">Country:</label><br>
+      <select id="country" name="country">
+        <option value="India">India</option>
+        <option value="Nepal">Nepal</option>
+        <option value="China">China</option>
+        <option value="Sri Lanka">Sri Lanka</option>
+      </select><br><br>
+
+      <label for="comm">Comments:</label><br>
+      <textarea id="comm" name="comm" rows="10" cols="70"></textarea><br><br>
+    </fieldset>
+
+    <div style="text-align: center;">
+      <input type="submit" value="Submit" style="font-size:18px; padding:10px 30px;">
+      <input type="reset" value="Reset" style="font-size:18px; padding:10px 30px;">
+    </div>
+    <br><br>
+  </form>
+</body>
+</html>
