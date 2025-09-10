@@ -1,0 +1,244 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+// Insert at beginning
+void insertBegin(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->prev = NULL;
+    newNode->next = head;
+
+    if (head != NULL) head->prev = newNode;
+    head = newNode;
+}
+
+// Insert at end
+void insertEnd(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        newNode->prev = NULL;
+        head = newNode;
+        return;
+    }
+
+    struct Node* temp = head;
+    while (temp->next != NULL) temp = temp->next;
+
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+// Insert before a key
+void insertBefore(int key, int data) {
+    if (head == NULL) return;
+
+    struct Node* temp = head;
+    while (temp != NULL && temp->data != key) temp = temp->next;
+
+    if (temp == NULL) {
+        printf("Key not found\n");
+        return;
+    }
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->prev = temp->prev;
+    newNode->next = temp;
+
+    if (temp->prev != NULL) temp->prev->next = newNode;
+    else head = newNode;
+
+    temp->prev = newNode;
+}
+
+// Insert after a key
+void insertAfter(int key, int data) {
+    struct Node* temp = head;
+    while (temp != NULL && temp->data != key) temp = temp->next;
+
+    if (temp == NULL) {
+        printf("Key not found\n");
+        return;
+    }
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = temp->next;
+    newNode->prev = temp;
+
+    if (temp->next != NULL) temp->next->prev = newNode;
+    temp->next = newNode;
+}
+
+// Insert at position (1-based index)
+void insertAtPos(int pos, int data) {
+    if (pos == 1) {
+        insertBegin(data);
+        return;
+    }
+
+    struct Node* temp = head;
+    for (int i = 1; i < pos - 1 && temp != NULL; i++) temp = temp->next;
+
+    if (temp == NULL) {
+        printf("Invalid position\n");
+        return;
+    }
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = temp->next;
+    newNode->prev = temp;
+
+    if (temp->next != NULL) temp->next->prev = newNode;
+    temp->next = newNode;
+}
+
+// Delete at beginning
+void deleteBegin() {
+    if (head == NULL) return;
+
+    struct Node* temp = head;
+    head = head->next;
+
+    if (head != NULL) head->prev = NULL;
+    free(temp);
+}
+
+// Delete at end
+void deleteEnd() {
+    if (head == NULL) return;
+
+    struct Node* temp = head;
+    while (temp->next != NULL) temp = temp->next;
+
+    if (temp->prev != NULL) temp->prev->next = NULL;
+    else head = NULL;
+
+    free(temp);
+}
+
+// Delete before a key
+void deleteBefore(int key) {
+    if (head == NULL || head->next == NULL) return;
+
+    struct Node* temp = head->next;
+    while (temp != NULL && temp->data != key) temp = temp->next;
+
+    if (temp == NULL || temp->prev == NULL) return;
+
+    struct Node* del = temp->prev;
+    if (del->prev != NULL) del->prev->next = temp;
+    else head = temp;
+
+    temp->prev = del->prev;
+    free(del);
+}
+
+// Delete after a key
+void deleteAfter(int key) {
+    struct Node* temp = head;
+    while (temp != NULL && temp->data != key) temp = temp->next;
+
+    if (temp == NULL || temp->next == NULL) return;
+
+    struct Node* del = temp->next;
+    temp->next = del->next;
+    if (del->next != NULL) del->next->prev = temp;
+
+    free(del);
+}
+
+// Delete at position
+void deleteAtPos(int pos) {
+    if (head == NULL) return;
+
+    struct Node* temp = head;
+    for (int i = 1; i < pos && temp != NULL; i++) temp = temp->next;
+
+    if (temp == NULL) return;
+
+    if (temp->prev != NULL) temp->prev->next = temp->next;
+    else head = temp->next;
+
+    if (temp->next != NULL) temp->next->prev = temp->prev;
+    free(temp);
+}
+
+// Search for a key
+void search(int key) {
+    struct Node* temp = head;
+    int pos = 1;
+    while (temp != NULL) {
+        if (temp->data == key) {
+            printf("Found at position %d\n", pos);
+            return;
+        }
+        pos++;
+        temp = temp->next;
+    }
+    printf("Not found\n");
+}
+
+// Count nodes
+void countNodes() {
+    int count = 0;
+    struct Node* temp = head;
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    printf("Node count = %d\n", count);
+}
+
+// Display forward
+void display() {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    int choice, data, key, pos;
+
+    do {
+        printf("\n--- Doubly Linked List Menu ---\n");
+        printf("1. Insert at Beginning\n2. Insert at End\n3. Insert Before Key\n4. Insert After Key\n5. Insert at Position\n");
+        printf("6. Delete at Beginning\n7. Delete at End\n8. Delete Before Key\n9. Delete After Key\n10. Delete at Position\n");
+        printf("11. Search\n12. Count Nodes\n13. Display\n0. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: printf("Enter data: "); scanf("%d", &data); insertBegin(data); break;
+            case 2: printf("Enter data: "); scanf("%d", &data); insertEnd(data); break;
+            case 3: printf("Enter key and data: "); scanf("%d %d", &key, &data); insertBefore(key, data); break;
+            case 4: printf("Enter key and data: "); scanf("%d %d", &key, &data); insertAfter(key, data); break;
+            case 5: printf("Enter position and data: "); scanf("%d %d", &pos, &data); insertAtPos(pos, data); break;
+            case 6: deleteBegin(); break;
+            case 7: deleteEnd(); break;
+            case 8: printf("Enter key: "); scanf("%d", &key); deleteBefore(key); break;
+            case 9: printf("Enter key: "); scanf("%d", &key); deleteAfter(key); break;
+            case 10: printf("Enter position: "); scanf("%d", &pos); deleteAtPos(pos); break;
+            case 11: printf("Enter key: "); scanf("%d", &key); search(key); break;
+            case 12: countNodes(); break;
+            case 13: display(); break;
+        }
+    } while (choice != 0);
+
+    return 0;
+}
