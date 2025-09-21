@@ -1,0 +1,96 @@
+#include <stdio.h>
+
+int fibonacci(int n) {
+    if (n == 0)
+        return 0;
+    else if (n == 1)
+        return 1;
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n, i;
+    printf("Enter number of terms: ");
+    scanf("%d", &n);
+    printf("Fibonacci Series: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+    return 0;
+}
+******************
+#include <stdio.h>
+
+int factorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    printf("Factorial of %d = %d\n", n, factorial(n));
+    return 0;
+}
+****************
+#include <stdio.h>
+
+int countDigits(int n) {
+    if (n == 0)
+        return 0;
+    else
+        return 1 + countDigits(n / 10);
+}
+
+int main() {
+    int num, digits;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    if (num == 0)
+        digits = 1;
+    else
+        digits = countDigits(num);
+    printf("Number of digits in %d = %d\n", num, digits);
+    return 0;
+}
+*****************
+#include <stdio.h>
+
+int sumOfDigits(int n) {
+    if (n == 0)
+        return 0;
+    else
+        return (n % 10) + sumOfDigits(n / 10);
+}
+
+int main() {
+    int num, sum;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    sum = sumOfDigits(num);
+    printf("Sum of digits of %d = %d\n", num, sum);
+    return 0;
+}
+***************
+#include <stdio.h>
+
+int sum(int n) {
+    if (n == 0)
+        return 0;
+    else
+        return n + sum(n - 1);
+}
+
+int main() {
+    int n, result;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    result = sum(n);
+    printf("Sum of numbers from 0 to %d = %d\n", n, result);
+    return 0;
+}
