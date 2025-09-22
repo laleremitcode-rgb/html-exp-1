@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body style ="font-size:45px;color : #0000dd;">
+
+<p  style ="color : rgb(110, 44, 106);">Display grade based on marks entered:</p>
+<p id="demo"></p>
+
+<script>
+let userInput = prompt("Please enter marks:");
+alert("You entered: " + userInput);
+
+if (userInput >= 90 && userInput <= 100) {
+    document.getElementById("demo").innerHTML = "A";
+} else if (userInput >= 75 && userInput < 89) {
+    document.getElementById("demo").innerHTML = "B";
+} else if (userInput >= 50 && userInput <= 74) {
+    document.getElementById("demo").innerHTML = "C";
+} else if (userInput < 50) {
+    document.getElementById("demo").innerHTML = "FAIL";
+} else {
+    document.getElementById("demo").innerHTML = "Invalid input";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 style="color: blue; font-size: 40px;">Eligible or not :</h1>
+
+<p id="demo" style="color: green; font-size: 28px;"></p>
+
+<script>
+let userInput = prompt("Please enter something:");
+alert("You entered: " + userInput);
+document.getElementById("demo").innerHTML = userInput;
+
+if (userInput >= 18) {
+  document.getElementById("demo").innerHTML = "Eligible for voting";
+} else {
+  document.getElementById("demo").innerHTML = "Not Eligible for voting";
+}
+</script>
+
+</body>
+</html>

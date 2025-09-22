@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Switch Example</title>
+</head>
+<body>
+  <h1>JavaScript Control Flow</h1>
+  <h2>The switch Statement</h2>
+
+  <p id="demo"></p>
+
+  <script>
+    let a = 15;
+    let b = 3;
+
+    let input = prompt("Enter 0 for Add, 1 for Subtract, 2 for Multiply, 3 for Divide, 4 for Modulus:");
+    alert("You entered: " + input);
+
+    let x;
+
+    switch (Number(input)) {
+      case 0:
+        x = a + b;
+        break;
+      case 1:
+        x = a - b;
+        break;
+      case 2:
+        x = a * b;
+        break;
+      case 3:
+        x = a / b;
+        break;
+      case 4:
+        x = a % b;
+        break;
+      default:
+        x = "No match";
+    }
+
+    document.getElementById("demo").innerHTML = "Result is " + x;
+  </script>
+</body>
+</html>
