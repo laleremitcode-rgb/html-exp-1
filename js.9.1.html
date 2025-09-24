@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Array</title>
+</head>
+<body style="font-size:33px;">
+<p id="array"></p>
+<script>
+let arr = [];
+for(let i = 0; i < 10; i++) {
+    arr[i] = parseInt(prompt("Enter integer " + (i+1)));
+}
+alert("Array: " + arr.join(", "));
+document.getElementById("array").innerText = "Array: " + arr.join(", ");
+</script>
+</body>
+</html>

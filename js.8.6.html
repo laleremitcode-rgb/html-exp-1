@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Factorial Function</title>
+</head>
+<body style = "font-size:30px;">
+
+<h2>Factorial of a Number</h2>
+<p id="output2"></p>
+
+<script>
+  function factorial(n) {
+    let fact = 1;
+    for (let i = 1; i <= n; i++) fact *= i;
+    return fact;
+  }
+
+  let number = 5;
+  document.getElementById("output2").innerHTML =
+    "Factorial of " + number + " is " + factorial(number);
+</script>
+
+</body>
+</html>

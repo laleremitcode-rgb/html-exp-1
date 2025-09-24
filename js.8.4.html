@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search in List</title>
+</head>
+<body style="font-size:50px;
+">
+
+<h2>Search for a Number</h2>
+<p id="output"></p>
+
+<script>
+  let numbers = [5, 12, 8, 130, 44, 9, 22];
+  let target = 22;
+  let found = false;
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === target) {
+      found = true;
+      document.getElementById("output").innerHTML = 
+        "Number " + target + " found at position " + i;
+      break;
+    }
+  }
+
+  if (!found) {
+    document.getElementById("output").innerHTML = 
+      "Number " + target + " not found in the list.";
+  }
+</script>
+
+</body>
+</html>

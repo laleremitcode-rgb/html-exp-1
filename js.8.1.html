@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table</title>
+</head>
+<body style = "font-size:20px;">
+     <h1> Multiplication Table</h1>
+    <p id="demo"></p>
+
+    <script>
+        let input1 = prompt("Enter number for multiplication table:");
+        alert("YOU ENTERED: " + input1);
+        let input2 = prompt("Enter number up to which you want multiplication:");
+        alert("YOU ENTERED: " + input2);
+
+        let n1 = Number(input1);
+        let n2 = Number(input2);
+        let text = "";
+
+        for (let i = 1; i <= n2; i++) {
+            text += n1 + " x " + i + " = " + (n1 * i) + "<br>";
+        }
+
+        document.getElementById("demo").innerHTML = text;
+    </script>
+
+</body>
+</html>

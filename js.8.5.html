@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Skip Multiples of 5</title>
+</head>
+<body style = "font-size:30px;">
+
+<h2>Numbers from 1 to 20 (Skipping multiples of 5)</h2>
+<p id="output1"></p>
+
+<script>
+  let result = "";
+  for (let i = 1; i <= 20; i++) {
+    if (i % 5 === 0) {
+      continue;
+    }
+    result += i + " ";
+  }
+  document.getElementById("output1").innerHTML = result;
+</script>
+
+</body>
+</html>

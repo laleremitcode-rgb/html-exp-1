@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of Digits using Do-While</title>
+</head>
+<body>
+
+<h2>Sum of Digits</h2>
+<p id="output"></p>
+
+<script>
+ let input1 = prompt("Enter number for multiplication table:");
+        alert("YOU ENTERED: " + input1);
+  let num = input1;
+  let sum = 0;
+  let n = num;
+
+  do {
+    let digit = n % 10;
+    sum = sum + digit;
+    n = Math.floor(n / 10);
+  } while (n > 0);
+
+  document.getElementById("output").innerHTML = 
+    "Number: " + num + "<br>Sum of digits: " + sum;
+</script>
+
+</body>
+</html>
