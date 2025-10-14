@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exp 12.6 - Default Parameter Function</title>
+</head>
+<body>
+  <h2>Function with Default Parameter</h2>
+  <pre id="output"></pre>
+
+  <script>
+    function multiply(a, b = 2) {
+      return a * b;
+    }
+
+    let result1 = multiply(5);
+    let result2 = multiply(5, 4);
+
+    document.getElementById("output").textContent =
+      "multiply(5) = " + result1 + "\n" +
+      "multiply(5, 4) = " + result2;
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exp 12.4 - Even or Odd Function</title>
+</head>
+<body>
+  <h2>Check Even or Odd using Function</h2>
+  <pre id="output"></pre>
+
+  <script>
+    function isEven(num) {
+      if (num % 2 === 0) {
+        return num + " is Even";
+      } else {
+        return num + " is Odd";
+      }
+    }
+
+    let n = 11;
+
+    document.getElementById("output").textContent = isEven(n);
+  </script>
+</body>
+</html>
