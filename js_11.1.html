@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exp 11.1 - Strings</title>
+</head>
+<body>
+  <h2>Strings with single, double quotes and backticks</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let str1 = 'Hello with single quotes';
+    let str2 = "Hello with double quotes";
+    let name = "Rahul";
+    let str3 = `Hello ${name}, using backticks (template literal)!`;
+
+    let out = "";
+    out += "Single Quotes: " + str1 + "\n";
+    out += "Double Quotes: " + str2 + "\n";
+    out += "Backticks: " + str3;
+
+    document.getElementById("output").textContent = out;
+
+    console.log(str1);
+    console.log(str2);
+    console.log(str3);
+  </script>
+</body>
+</html>

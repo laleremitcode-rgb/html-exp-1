@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exp 11.2 - String Length</title>
+</head>
+<body>
+  <h2>Find Length of a String</h2>
+  <button onclick="findLength()">Enter String</button>
+  <p id="result"></p>
+
+  <script>
+    function findLength() {
+      let userInput = prompt("Enter a string:");
+      let length = userInput.length;
+
+      document.getElementById("result").textContent =
+        "You entered: \"" + userInput + "\" (Length = " + length + ")";
+    }
+  </script>
+</body>
+</html>
