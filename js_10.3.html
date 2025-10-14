@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator Object</title>
+</head>
+<body>
+  <h2>Calculator Object Example</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let calculator = {
+      a: 10,
+      b: 5,
+      add: function () { return this.a + this.b; },
+      subtract: function () { return this.a - this.b; },
+      multiply: function () { return this.a * this.b; }
+    };
+
+    let out = "Addition: " + calculator.add() + "\n";
+    out += "Subtraction: " + calculator.subtract() + "\n";
+    out += "Multiplication: " + calculator.multiply();
+
+    document.getElementById("output").textContent = out;
+  </script>
+</body>
+</html>

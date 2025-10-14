@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Person Object</title>
+</head>
+<body>
+  <h2>Person Object Example</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let person = {
+      name: "Anjali",
+      age: 25,
+      city: "Pune"
+    };
+
+    let out = "";
+    for (let key in person) {
+      out += key + ": " + person[key] + "\n";
+    }
+
+    document.getElementById("output").textContent = out;
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Object</title>
+</head>
+<body>
+  <h2>Student Object Example</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let student = {
+      name: "Rahul",
+      age: 21,
+      course: "Computer Science"
+    };
+
+    let out = "Dot Notation: " + student.name + ", " + student.age + ", " + student.course + "\n";
+    out += "Bracket Notation: " + student["name"] + ", " + student["age"] + ", " + student["course"];
+
+    document.getElementById("output").textContent = out;
+  </script>
+</body>
+</html>

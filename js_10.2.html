@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Object</title>
+</head>
+<body>
+  <h2>Car Object Example</h2>
+  <pre id="output"></pre>
+
+  <script>
+    let car = {
+      brand: "Toyota",
+      model: "Corolla"
+    };
+
+    car.year = 2022;
+    car.model = "Fortuner";
+    delete car.year;
+
+    let out = "Brand: " + car.brand + ", Model: " + car.model;
+
+    document.getElementById("output").textContent = out;
+  </script>
+</body>
+</html>
