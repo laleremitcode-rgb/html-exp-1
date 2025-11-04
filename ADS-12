@@ -1,0 +1,128 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int vertex;
+    struct Node* next;
+};
+
+struct List {
+    struct Node* head;
+};
+
+
+struct Graph {
+    int numVertices;
+    int **adjMatrix;
+    struct List* adjList;
+};
+
+struct Node* createNode(int v) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->vertex = v;
+    newNode->next = NULL;
+    return newNode;
+}
+
+
+struct Graph* createGraph(int vertices) {
+    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+    graph->numVertices = vertices;
+
+    
+    graph->adjMatrix = (int**)malloc(vertices * sizeof(int*));
+    for (int i = 0; i < vertices; i++) {
+        graph->adjMatrix[i] = (int*)calloc(vertices, sizeof(int));
+    }
+
+    graph->adjList = (struct List*)malloc(vertices * sizeof(struct List));
+    for (int i = 0; i < vertices; i++) {
+        graph->adjList[i].head = NULL;
+    }
+
+    return graph;
+}
+
+void addEdge(struct Graph* graph, int src, int dest) {
+    
+    graph->adjMatrix[src][dest] = 1;
+    graph->adjMatrix[dest][src] = 1;
+
+
+    struct Node* newNode = createNode(dest);
+    newNode->next = graph->adjList[src].head;
+    graph->adjList[src].head = newNode;
+
+    newNode = createNode(src);
+    newNode->next = graph->adjList[dest].head;
+    graph->adjList[dest].head = newNode;
+}
+
+
+void displayMatrix(struct Graph* graph) {
+    printf("\nAdjacency Matrix:\n");
+    for (int i = 0; i < graph->numVertices; i++) {
+        for (int j = 0; j < graph->numVertices; j++) {
+            printf("%d ", graph->adjMatrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+void displayList(struct Graph* graph) {
+    printf("\nAdjacency List:\n");
+    for (int i = 0; i < graph->numVertices; i++) {
+        struct Node* temp = graph->adjList[i].head;
+        printf("%d -> ", i);
+        while (temp) {
+            printf("%d -> ", temp->vertex);
+            temp = temp->next;
+        }
+        printf("NULL\n");
+    }
+}
+
+int main() {
+    int vertices, edges, src, dest, choice;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    struct Graph* graph = createGraph(vertices);
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (int i = 0; i < edges; i++) {
+        printf("Enter edge %d (source and destination): ", i + 1);
+        scanf("%d %d", &src, &dest);
+        addEdge(graph, src, dest);
+    }
+
+    do {
+        printf("\n===== GRAPH MENU =====\n");
+        printf("1. Display Adjacency Matrix\n");
+        printf("2. Display Adjacency List\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                displayMatrix(graph);
+                break;
+            case 2:
+                displayList(graph);
+                break;
+            case 3:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}
